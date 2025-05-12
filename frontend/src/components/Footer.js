@@ -55,7 +55,7 @@ const Footer = () => {
         <FooterContent>
           <FlexContainer justifyContent="space-between" mobileDirection="column" gap="2rem">
             <div>
-              <h3>CryptoGuard</h3>
+              <h3>SPECTRA</h3>
               <p>Secure file encryption and decryption for all your needs.</p>
             </div>
             
@@ -85,7 +85,7 @@ const Footer = () => {
           </FlexContainer>
           
           <Copyright>
-            &copy; {new Date().getFullYear()} CryptoGuard. All rights reserved.
+            &copy; {new Date().getFullYear()} SPECTRA. All rights reserved.
           </Copyright>
         </FooterContent>
       </Container>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Container, Section, FlexContainer } from '../components/styles/Container.styled';
-import FileUploader from '../components/FileUploader';    
+// import FileUploader from '../components/FileUploader';    
 import CryptoForm from '../components/CryptoForm';
 import EncryptionAnimation from '../animations/EncryptionAnimation';
 import DecryptionAnimation from '../animations/DecryptionAnimation';  //frontend\src\animations\DecryptionAnimation.js+
@@ -164,22 +164,21 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Secure Your Files with CryptoGuard
+            Secure Your Files with SPECTRA
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            A powerful web tool for encrypting and decrypting your files with advanced algorithms, 
-            ensuring your data remains private and secure.
+            SPECTRA is a web tool ensuring your data remains private and secure. Using a Secure Protection via Encrypted Color Transformation & Recursive Armstrong Algorithms.
           </motion.p>
         </Container>
       </HeroSection>
       
       <FeaturesSection>
         <Container>
-          <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>Why Choose CryptoGuard?</h2>
+          <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>Why Choose SPECTRA?</h2>
           <FlexContainer justifyContent="space-between" wrap="wrap">
             <FeatureCard
               initial={{ opacity: 0, y: 50 }}

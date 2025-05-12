@@ -95,7 +95,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             style={{ textAlign: 'center', marginBottom: '3rem' }}
           >
-            About CryptoGuard
+            About SPECTRA
           </motion.h1>
           
           <FlexContainer justifyContent="space-between" wrap="wrap" gap="2rem">
@@ -118,7 +118,7 @@ const About = () => {
               <FaShieldAlt />
               <h3>Our Mission</h3>
               <p>
-                At CryptoGuard, we're dedicated to providing accessible encryption tools 
+                At SPECTRA, we're dedicated to providing accessible encryption tools 
                 that empower individuals and organizations to protect their sensitive data 
                 with enterprise-grade security.
               </p>
@@ -220,7 +220,7 @@ const About = () => {
             >
               <h3>Combined Approach</h3>
               <p>
-                CryptoGuard applies both algorithms in sequence to provide layered security:
+                SPECTRA applies both algorithms in sequence to provide layered security:
               </p>
               <ul>
                 <li>Data first passes through the Armstrong encryption</li>
@@ -245,12 +245,12 @@ const About = () => {
               viewport={{ once: true }}
               style={{ flex: '1 1 300px', maxWidth: '350px' }}
             >
-              <img src="/api/placeholder/200/200" alt="Team member placeholder" />
-              <h3>Aarti Rathi</h3>
-              <p className="title">Founder & Lead Developer</p>
+              {/* <img src="/api/placeholder/200/200" alt="Team member placeholder" /> */}
+              <h3>Ronith Sathish Acharya</h3>
+              <p className="title">Lead Developer</p>
               <p className="bio">
                 Cryptography expert with a passion for building secure applications. 
-                Created the core algorithms behind CryptoGuard.
+                Created the core algorithms behind SPECTRA.
               </p>
             </TeamMember>
             
@@ -261,8 +261,8 @@ const About = () => {
               viewport={{ once: true }}
               style={{ flex: '1 1 300px', maxWidth: '350px' }}
             >
-              <img src="/api/placeholder/200/200" alt="Team member placeholder" />
-              <h3>Alex Thompson</h3>
+              {/* <img src="/api/placeholder/200/200" alt="Team member placeholder" /> */}
+              <h3>Rithvik Shetty</h3>
               <p className="title">UI/UX Designer</p>
               <p className="bio">
                 Design specialist focused on creating intuitive user experiences 
@@ -277,8 +277,8 @@ const About = () => {
               viewport={{ once: true }}
               style={{ flex: '1 1 300px', maxWidth: '350px' }}
             >
-              <img src="/api/placeholder/200/200" alt="Team member placeholder" />
-              <h3>Sarah Chen</h3>
+              {/* <img src="/api/placeholder/200/200" alt="Team member placeholder" /> */}
+              <h3>Karthik & Ashray</h3>
               <p className="title">Security Researcher</p>
               <p className="bio">
                 Cybersecurity expert responsible for testing and ensuring the 

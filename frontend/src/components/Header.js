@@ -123,7 +123,7 @@ const Header = () => {
         <FlexContainer>
           <Logo to="/">
             <FaLock />
-            <span>Crypto</span>Guard
+            <span>SPECTRA</span>
           </Logo>
           
           <MenuToggle onClick={toggleMenu}>
