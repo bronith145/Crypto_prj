@@ -72,6 +72,7 @@ const DownloadButton = styled(motion.a)`
 `;
 
 const ResultDisplay = ({ result, actionType }) => {
+  console.log("result: ",result);
   return (
     <ResultCard
       initial={{ opacity: 0, y: 20 }}
@@ -95,7 +96,12 @@ const ResultDisplay = ({ result, actionType }) => {
       </ResultContent>
       
       <DownloadButton 
-        href={result.downloadUrl}
+       href={
+        result.downloadUrl.startsWith('/output/')
+          ? `http://localhost:5000${result.downloadUrl}`
+          : `http://localhost:5000/output/${result.downloadUrl.split('\\').pop()}`
+      }
+        
         download
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}

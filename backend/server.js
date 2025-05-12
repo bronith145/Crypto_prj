@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/output', express.static(path.join(__dirname, 'public/output'))); //added this, which moves puts tje encrpyted files it to public/output
+
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -55,10 +57,10 @@ app.post('/api/encrypt', upload.single('file'), async (req, res) => {
     console.log(`File path for uploaded file: ${filePath}`);
     // Perform encryption
     await encrypt(filePath, outputPath, encryptionKey);
-    
+    console.log("outputPath ",outputPath)
     // Send response with file URL
     res.json({
-      message: 'File encrypted successfully',
+      message: 'File encrypted successfully123131313',
       originalFile: req.file.originalname,
       encryptedFile: outputFileName,
       downloadUrl: `/output/${outputFileName}`
