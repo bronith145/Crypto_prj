@@ -41,11 +41,11 @@ app.post('/api/encrypt', upload.single('file'), async (req, res) => {
 
     const { path: filePath, filename } = req.file;
     const encryptionKey = req.body.key || 'My Name Is Aarti Rathi'; // Default key from original code
-    
+
     // Define output path
     const outputFileName = `encrypted_${filename}`;
     const outputPath = path.join(__dirname, 'public', 'output', outputFileName);
-    
+
     // Create output directory if it doesn't exist
     const outputDir = path.dirname(outputPath);
     console.log(`Creating output directory at ${outputDir}`);
@@ -53,18 +53,20 @@ app.post('/api/encrypt', upload.single('file'), async (req, res) => {
       fs.mkdirSync(outputDir, { recursive: true });
     }
     console.log(`Output directory created at ${outputDir}`);
-    console.log(`Output path for encrypted file: ${outputPath}`);   
+    console.log(`Output path for encrypted file: ${outputPath}`);
     console.log(`File path for uploaded file: ${filePath}`);
     // Perform encryption
-    await encrypt(filePath, outputPath, encryptionKey);
-    console.log("outputPath ",outputPath)
-    // Send response with file URL
+    const { path: resultPath, preview: encryptedPreview } = await encrypt(filePath, outputPath, encryptionKey);
+    console.log('✅ Sending encryptedPreview:', encryptedPreview);
+
     res.json({
-      message: 'File encrypted successfully123131313',
+      message: 'File encrypted successfully',
       originalFile: req.file.originalname,
       encryptedFile: outputFileName,
-      downloadUrl: `/output/${outputFileName}`
+      downloadUrl: `/output/${outputFileName}`,
+      encryptedPreview
     });
+
   } catch (error) {
     console.error('Encryption error:', error);
     res.status(500).json({ message: 'Error encrypting file', error: error.message });
@@ -79,11 +81,11 @@ app.post('/api/decrypt', upload.single('file'), async (req, res) => {
 
     const { path: filePath, filename } = req.file;
     const decryptionKey = req.body.key || 'My Name Is Aarti Rathi'; // Default key
-    
+
     // Define output path
     const outputFileName = `decrypted_${filename}`;
     const outputPath = path.join(__dirname, 'public', 'output', outputFileName);
-    
+
     // Create output directory if it doesn't exist
     const outputDir = path.dirname(outputPath);
     if (!fs.existsSync(outputDir)) {
@@ -92,7 +94,7 @@ app.post('/api/decrypt', upload.single('file'), async (req, res) => {
 
     // Perform decryption
     await decrypt(filePath, outputPath, decryptionKey);
-    
+
     // Send response with file URL
     res.json({
       message: 'File decrypted successfully',
@@ -109,7 +111,7 @@ app.post('/api/decrypt', upload.single('file'), async (req, res) => {
 // Serve the React app in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
-  
+
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });

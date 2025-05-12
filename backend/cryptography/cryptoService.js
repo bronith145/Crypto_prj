@@ -14,12 +14,12 @@ class KeyGenerator {
       const charCode = this.phrase.charCodeAt(i);
       key += charCode.toString().padStart(2, '0');
     }
-    
+
     // Ensure we have at least 13 digits (needed for ColorManager)
     while (key.length < 13) {
       key += '0';
     }
-    
+
     return key.substring(0, 13);
   }
 }
@@ -38,7 +38,7 @@ class ArmstrongManager {
   constructor(key) {
     this.key = key;
     this.index = -1;
-    
+
     // Convert the key to a numeric array
     this.keyDigits = [];
     for (let i = 0; i < key.length; i++) {
@@ -62,7 +62,7 @@ class ColorManager {
     this.rgb = new Array(3);
     this.enc_index = -1;
     this.dec_index = -1;
-    
+
     // Parse key similar to Java version
     const suffix = parseInt(key.substring(12));
     this.rgb[0] = (parseInt(key.substring(0, 4)) + suffix) % 256;
@@ -86,32 +86,41 @@ class ColorManager {
   }
 }
 
-// Main encryption/decryption functions
+
 async function encrypt(inputPath, outputPath, keyPhrase) {
   try {
     const keyGen = new KeyGenerator(keyPhrase);
     const numericKey = keyGen.getNumericKey();
     const armstrongManager = new ArmstrongManager(numericKey);
     const colorManager = new ColorManager(numericKey);
-    
+
     const inputData = await fs.readFile(inputPath);
     const outputData = Buffer.alloc(inputData.length);
-    
+
     for (let i = 0; i < inputData.length; i++) {
-      let byte = inputData[i] & 0xFF;
+      let byte = inputData[i] & 0xff;
       byte = armstrongManager.encrypt(byte);
       byte = colorManager.encrypt(byte);
       outputData[i] = byte;
     }
-    
+
     await fs.writeFile(outputPath, outputData);
-    console.log(`Encrypted file saved to ${outputPath}`);
-    return outputPath;
+
+    // ✅ ADD THIS TO GENERATE THE PREVIEW
+    const previewHex = outputData.toString('hex').substring(0, 1000);  // 100 bytes in hex
+    console.log('✅ previewHex inside cryptoService:', previewHex);
+
+    // ✅ RETURN AS OBJECT
+    return {
+      path: outputPath,
+      preview: previewHex
+    };
   } catch (error) {
     console.error('Encryption error:', error);
     throw error;
   }
 }
+
 
 async function decrypt(inputPath, outputPath, keyPhrase) {
   try {
@@ -119,17 +128,17 @@ async function decrypt(inputPath, outputPath, keyPhrase) {
     const numericKey = keyGen.getNumericKey();
     const armstrongManager = new ArmstrongManager(numericKey);
     const colorManager = new ColorManager(numericKey);
-    
+
     const inputData = await fs.readFile(inputPath);
     const outputData = Buffer.alloc(inputData.length);
-    
+
     for (let i = 0; i < inputData.length; i++) {
       let byte = inputData[i] & 0xFF;
       byte = colorManager.decrypt(byte);
       byte = armstrongManager.decrypt(byte);
       outputData[i] = byte;
     }
-    
+
     await fs.writeFile(outputPath, outputData);
     return outputPath;
   } catch (error) {
