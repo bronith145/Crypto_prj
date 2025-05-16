@@ -95,7 +95,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             style={{ textAlign: 'center', marginBottom: '3rem' }}
           >
-            About SPECTRA
+            About Encrytonator
           </motion.h1>
           
           <FlexContainer justifyContent="space-between" wrap="wrap" gap="2rem">
@@ -118,7 +118,7 @@ const About = () => {
               <FaShieldAlt />
               <h3>Our Mission</h3>
               <p>
-                At SPECTRA, we're dedicated to providing accessible encryption tools 
+                At Encrytonator, we're dedicated to providing accessible encryption tools 
                 that empower individuals and organizations to protect their sensitive data 
                 with enterprise-grade security.
               </p>
@@ -220,7 +220,7 @@ const About = () => {
             >
               <h3>Combined Approach</h3>
               <p>
-                SPECTRA applies both algorithms in sequence to provide layered security:
+                Encrytonator applies both algorithms in sequence to provide layered security:
               </p>
               <ul>
                 <li>Data first passes through the Armstrong encryption</li>
@@ -250,7 +250,7 @@ const About = () => {
               <p className="title">Lead Developer</p>
               <p className="bio">
                 Cryptography expert with a passion for building secure applications. 
-                Created the core algorithms behind SPECTRA.
+                Created the core algorithms behind Encrytonator.
               </p>
             </TeamMember>
             
