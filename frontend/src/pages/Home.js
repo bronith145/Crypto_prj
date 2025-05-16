@@ -164,21 +164,21 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Secure Your Files with SPECTRA
+            Secure Your Files with Encrytonator
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            SPECTRA is a web tool ensuring your data remains private and secure. Using a Secure Protection via Encrypted Color Transformation & Recursive Armstrong Algorithms.
+            Encrytonator is a web tool ensuring your data remains private and secure. Using a Secure Protection via Encrypted Color Transformation & Recursive Armstrong Algorithms.
           </motion.p>
         </Container>
       </HeroSection>
       
       <FeaturesSection>
         <Container>
-          <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>Why Choose SPECTRA?</h2>
+          <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>Why Choose Encrytonator?</h2>
           <FlexContainer justifyContent="space-between" wrap="wrap">
             <FeatureCard
               initial={{ opacity: 0, y: 50 }}
